@@ -12,8 +12,8 @@ from june13_auth.backends import JWTAuthentication
 class MedicalEntityViewSet(viewsets.ModelViewSet):
     queryset = MedicalEntity.objects.all()
     serializer_class = MedicalEntitySerializer
-    authentication_classes = [JWTAuthentication,]
-    permission_classes = [IsAuthenticated,]
+    authentication_classes = (JWTAuthentication,)
+    permission_classes = (IsAuthenticated,)
 
     def post(self, request, *args, **kwargs):
         image = request.data['image']
