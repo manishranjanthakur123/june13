@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'rest_framework',
     'june13_auth.apps.June13AuthConfig',
+    'june13_diagnoser.apps.June13DiagnoserConfig',
     'corsheaders',
 ]
 
@@ -124,6 +125,9 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = '/home/manishranjan/june13/static'
 
+MEDIA_URL = '/media/'
+MEDIA_ROOT =os.path.join(BASE_DIR, 'media')
+
 # Tell Django about the custom `User` model we created. The string
 # `june13_auth.User` tells Django we are referring to the `User` model in
 # the `june13_auth` module. This module is registered above in a setting
@@ -136,6 +140,8 @@ REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
            'june13_auth.backends.JWTAuthentication',
         ),
+    'DEFAULT_PERMISSION_CLASSES': {'rest_framework.permissions.IsAuthenticated'}
+
 }
 
 CORS_ORIGIN_ALLOW_ALL  = True
